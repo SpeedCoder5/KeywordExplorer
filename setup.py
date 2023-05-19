@@ -42,6 +42,7 @@ setup(
     description='A set of tools for producing and exploring keywords on Twitter and the Wikipedia',
     long_description=long_s,
     install_requires=[
+        'python-dotenv',
         'pandas',
         'matplotlib',
         'numpy',

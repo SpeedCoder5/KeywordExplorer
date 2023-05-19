@@ -1,0 +1,4 @@
+#!/bin/bash
+# run setup.sh first
+umask 0002
+source ~/.virtualenvs/kwe/bin/activate

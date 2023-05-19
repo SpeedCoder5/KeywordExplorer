@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 import getpass
 import inspect
 import re
@@ -42,7 +43,7 @@ class AppBase(tk.Tk):
         dt = datetime.now()
         self.logfile = "{}/{}_{}.csv".format(Path.home(), self.app_name, dt.strftime("%Y-%m-%d-%H-%M-%S"))
         self.log_action("session", {"session start":dt.strftime("%H:%M:%S")})
-
+        load_dotenv() # load environment variables from .env file
 
     def setup_app(self):
         self.app_name = "AppBase"
