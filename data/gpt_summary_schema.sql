@@ -33,7 +33,7 @@ CREATE TABLE `source_text_view` (
   `parsed_text` tinyint NOT NULL,
   `embedding` tinyint NOT NULL,
   `moderation` tinyint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -55,7 +55,7 @@ CREATE TABLE `summary_text_view` (
   `embedding` tinyint NOT NULL,
   `origins` tinyint NOT NULL,
   `moderation` tinyint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -73,7 +73,7 @@ CREATE TABLE `table_parsed_text` (
   `embedding` blob DEFAULT NULL,
   `moderation` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -88,7 +88,7 @@ CREATE TABLE `table_source` (
   `text_name` varchar(255) DEFAULT NULL,
   `group_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 COMMENT='The source doc for the parsed text';
+) ENGINE=InnoDB AUTO_INCREMENT=1 COMMENT='The source doc for the parsed text';
 SET character_set_client = @saved_cs_client;
 
 --
@@ -108,7 +108,7 @@ CREATE TABLE `table_summary_text` (
   `origins` text DEFAULT NULL,
   `moderation` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 SET character_set_client = @saved_cs_client;
 
 --

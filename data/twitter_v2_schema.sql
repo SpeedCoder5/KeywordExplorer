@@ -42,7 +42,7 @@ CREATE TABLE `keyword_tweet_view` (
   `is_thread` tinyint NOT NULL,
   `embedding` tinyint NOT NULL,
   `moderation` tinyint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -72,7 +72,7 @@ CREATE TABLE `subsample_tweet_view` (
   `embedding` tinyint NOT NULL,
   `experiment_id` tinyint NOT NULL,
   `keyword` tinyint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -92,7 +92,7 @@ CREATE TABLE `table_embedding_params` (
   `min_samples` int(11) DEFAULT NULL,
   `perplexity` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -106,7 +106,7 @@ CREATE TABLE `table_exclude` (
   `experiment_id` int(11) DEFAULT NULL,
   `cluster_id` int(11) DEFAULT NULL,
   `keyword` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -124,7 +124,7 @@ CREATE TABLE `table_experiment` (
   `sample_end` datetime DEFAULT NULL,
   `keywords` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -143,7 +143,7 @@ CREATE TABLE `table_query` (
   `end_time` datetime DEFAULT NULL,
   `date_executed` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -160,7 +160,7 @@ CREATE TABLE `table_subsampled` (
   `query_row` int(11) DEFAULT NULL,
   `keyword` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -189,7 +189,7 @@ CREATE TABLE `table_tweet` (
   `embedding` blob DEFAULT NULL,
   PRIMARY KEY (`row_id`),
   UNIQUE KEY `value` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -208,7 +208,7 @@ CREATE TABLE `table_user` (
   `username` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `verified` tinyint(1) DEFAULT NULL,
   UNIQUE KEY `table_user_id_uindex` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -232,7 +232,7 @@ CREATE TABLE `tweet_user_cluster_view` (
   `username` tinyint NOT NULL,
   `location` tinyint NOT NULL,
   `description` tinyint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 SET character_set_client = @saved_cs_client;
 
 --

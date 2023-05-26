@@ -44,7 +44,7 @@ create-databases: ## create databases
 	for db_name in $(DB_NAMES); do \
 		if [ -f error.log ]; then rm error.log; fi; \
 		echo "creating $$db_name"; \
-		mysql -v -e "CREATE DATABASE IF NOT EXISTS $$db_name;"; \
+		mysql -v -e "CREATE DATABASE IF NOT EXISTS $$db_name DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci;"; \
 		mysql -v -D $$db_name -e "SOURCE $${db_name}_schema.sql" 2> >(tee error.log); \
 		if [ -s error.log ]; then \
 			echo "Error occurred during MySQL execution. Check data/error.log for details."; \

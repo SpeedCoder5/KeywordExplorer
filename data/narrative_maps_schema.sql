@@ -29,7 +29,7 @@ CREATE TABLE `index_view` (
   `parsed_text_id` tinyint NOT NULL,
   `gen_id` tinyint NOT NULL,
   `emb_id` tinyint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -52,7 +52,7 @@ CREATE TABLE `parsed_view` (
   `mapped` tinyint NOT NULL,
   `cluster_id` tinyint NOT NULL,
   `embedding_model` tinyint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -80,7 +80,7 @@ CREATE TABLE `run_params_view` (
   `EPS` tinyint NOT NULL,
   `min_samples` tinyint NOT NULL,
   `perplexity` tinyint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -101,7 +101,7 @@ CREATE TABLE `run_parsed_view` (
   `embedding_model` tinyint NOT NULL,
   `line_index` tinyint NOT NULL,
   `parsed_text` tinyint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -119,7 +119,7 @@ CREATE TABLE `table_embedding_params` (
   `min_samples` int(11) DEFAULT NULL,
   `perplexity` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -135,7 +135,7 @@ CREATE TABLE `table_experiment` (
   `date` datetime DEFAULT NULL,
   `notes` text DEFAULT NULL COMMENT 'Notes related to experement such as sources for prompts',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -154,7 +154,7 @@ CREATE TABLE `table_generate_params` (
   `model` varchar(255) DEFAULT NULL,
   `automated_runs` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -174,7 +174,7 @@ CREATE TABLE `table_parsed_text` (
   `mapped` blob DEFAULT NULL,
   `cluster_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -193,7 +193,7 @@ CREATE TABLE `table_run` (
   `generator_params` int(11) DEFAULT NULL,
   `embedding_params` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 SET character_set_client = @saved_cs_client;
 
 --
