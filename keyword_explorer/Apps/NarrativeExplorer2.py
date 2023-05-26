@@ -84,7 +84,7 @@ class NarrativeExplorer2(AppBase):
         self.app_version = "3.30.2023"
         self.geom = (870, 670)
         self.oai = OpenAIComms()
-        self.msi = MySqlInterface(user_name="root", db_name="narrative_maps")
+        self.msi = MySqlInterface(db_name="narrative_maps")
         self.mr = ManifoldReduction()
         self.so = SharedObjects()
 

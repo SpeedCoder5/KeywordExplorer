@@ -79,7 +79,7 @@ class TweetDownloader(AppBase):
         self.text_width = 70
 
         self.tkws = TweetKeywords()
-        self.msi = MySqlInterface(user_name ="root", db_name ="twitter_v2")
+        self.msi = MySqlInterface(db_name ="twitter_v2")
         if not self.tkws.key_exists():
             message.showwarning("Key Error", "Could not find Environment key 'BEARER_TOKEN_2'")
 

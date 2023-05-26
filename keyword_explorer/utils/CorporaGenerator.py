@@ -157,7 +157,7 @@ class CorporaGenerator:
 
 
 def main():
-    msi = MySqlInterface(user_name="root", db_name="twitter_v2")
+    msi = MySqlInterface(db_name="twitter_v2")
     cg = CorporaGenerator(msi)
 
     cg.tweet_created_at_flag= True

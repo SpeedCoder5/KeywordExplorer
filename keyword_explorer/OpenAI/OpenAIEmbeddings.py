@@ -24,10 +24,10 @@ class OpenAIEmbeddings:
     msi:MySqlInterface
 
 
-    def __init__(self, user="root", db="gpt_summary"):
+    def __init__(self, db="gpt_summary"):
         print("OpenAIEmbeddings")
         self.oac = OpenAIComms()
-        self.msi = MySqlInterface(user, db)
+        self.msi = MySqlInterface(db_name=db)
 
     def create_question(self, question:str, context:str) -> str:
         #prompt=f"Answer the question based on the context below, and if the question can't be answered based on the context, say \"I don't know\"\n\nContext: {context}\n\n---\n\nQuestion: {question}\nAnswer:"
@@ -138,7 +138,7 @@ class OpenAIEmbeddings:
         df = pd.DataFrame(d_list)
         return df
 
-    def set_summary_embeddings(self, text_name:str, group_name:str, limit:int = -1, database="gpt_summary", user="root") -> int:
+    def set_summary_embeddings(self, text_name:str, group_name:str, limit:int = -1) -> int:
         d:Dict
 
         # Make sure there is a project to use
@@ -294,7 +294,7 @@ class OpenAIEmbeddings:
 
         return summary_count
 
-    def summarize_summary_text(self, text_name:str, group_name:str, source_level:int, max_lines = -1, words_to_summarize = 200, database="gpt_summary", user="root") -> int:
+    def summarize_summary_text(self, text_name:str, group_name:str, source_level:int, max_lines = -1, words_to_summarize = 200) -> int:
         # take some set of lines from the parsed text table and produce summary lines in the summary text table
         d:Dict
 
@@ -343,7 +343,7 @@ class OpenAIEmbeddings:
         return num_lines
 
 
-    def store_project_data(self, text_name:str, group_name_str, df:pd.DataFrame, database="gpt_summary", user="root") -> int:
+    def store_project_data(self, text_name:str, group_name_str, df:pd.DataFrame) -> int:
         sql = "select * from table_source where text_name = %s and group_name = %s"
         vals = (text_name, group_name_str)
         results = self.msi.read_data(sql, vals)
@@ -363,7 +363,7 @@ class OpenAIEmbeddings:
             vals = (source_id, text, embedding.dumps(), moderation)
             self.msi.write_sql_values_get_row(sql, vals)
 
-    def load_project_parsed_text(self, text_name:str, group_name:str, database="gpt_summary", user="root", limit = -1) -> pd.DataFrame:
+    def load_project_parsed_text(self, text_name:str, group_name:str, limit = -1) -> pd.DataFrame:
         sql = "select * from table_source where text_name = %s and group_name = %s"
         vals = (text_name, group_name)
         results = self.msi.read_data(sql, vals)

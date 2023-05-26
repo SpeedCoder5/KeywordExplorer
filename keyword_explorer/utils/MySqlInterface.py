@@ -9,15 +9,23 @@ class MySqlInterface:
     enable_writes = True
     last_query = "NONE"
 
-    def __init__(self, user_name: str, db_name: str, user_password: str = None, enable_writes: bool = True):
+    def __init__(self, db_name: str, user_name: str=None, user_password: str = None, enable_writes: bool = True,
+                 autocommit: bool = True, host:str = None, ssl_ca = None):
         # print("initializing")
-        if user_password == None:
-            user_password = os.environ.get("LOCAL_ROOT_MYSQL")
+        self.connection_parameters = {
+            'host' : host or os.environ.get("DATABASE_HOST") or 'localhost',
+            'user' : user_name or os.environ.get("LOCAL_ROOT_MYSQL") or os.environ.get("DATABASE_USER") or 'root',
+            'password' : user_password or os.environ.get("DATABASE_PASSWORD") or '',
+            'db' : db_name,
+            'cursorclass' : pymysql.cursors.DictCursor,
+            'charset': 'utf8mb4'
+        }
+        ssl_ca = ssl_ca or os.environ.get("DATABASE_SSL_CA")
+        if ssl_ca:
+            self.connection_parameters['ssl_ca'] = ssl_ca
 
         self.enable_writes = enable_writes
-        self.connection = pymysql.connect(
-            host='localhost', user=user_name, password=user_password, db=db_name,
-            cursorclass=pymysql.cursors.DictCursor, charset='utf8mb4')
+        self.connection = pymysql.connect(**self.connection_parameters)
         self.connection.autocommit(True)
 
     def set_enable_writes(self, val:bool):

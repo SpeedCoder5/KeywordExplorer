@@ -86,7 +86,7 @@ class EmbeddingsExplorer(AppBase):
         self.geom = (640, 620)
         self.oai = OpenAIComms()
         self.tkws = TweetKeywords()
-        self.msi = MySqlInterface(user_name="root", db_name="twitter_v2")
+        self.msi = MySqlInterface(db_name="twitter_v2")
         self.mr = ManifoldReduction()
         self.cg = CorporaGenerator(self.msi)
         self.subsample_list = []

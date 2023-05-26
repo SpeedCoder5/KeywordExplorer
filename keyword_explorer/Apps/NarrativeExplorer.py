@@ -90,7 +90,7 @@ class NarrativeExplorer(AppBase):
         self.app_version = "3.15.2023"
         self.geom = (840, 670)
         self.oai = OpenAIComms()
-        self.msi = MySqlInterface(user_name="root", db_name="narrative_maps")
+        self.msi = MySqlInterface(db_name="narrative_maps")
         self.mr = ManifoldReduction()
 
         if not self.oai.key_exists():

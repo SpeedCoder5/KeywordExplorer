@@ -4,26 +4,27 @@
 -- ------------------------------------------------------
 -- Server version	10.4.19-MariaDB
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT;
+SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS;
+SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION;
+SET NAMES utf8mb4;
+SET @OLD_TIME_ZONE=@@TIME_ZONE;
+SET TIME_ZONE='+00:00';
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO';
+SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0;
 
 --
 -- Temporary table structure for view `source_text_view`
 --
 
 DROP TABLE IF EXISTS `source_text_view`;
-/*!50001 DROP VIEW IF EXISTS `source_text_view`*/;
-SET @saved_cs_client     = @@character_set_client;
+DROP VIEW IF EXISTS `source_text_view`;
+SET @saved_cs_client = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `source_text_view` (
+SELECT USER();
+CREATE TABLE `source_text_view` (
   `source_id` tinyint NOT NULL,
   `text_name` tinyint NOT NULL,
   `group_name` tinyint NOT NULL,
@@ -32,7 +33,7 @@ SET character_set_client = utf8;
   `parsed_text` tinyint NOT NULL,
   `embedding` tinyint NOT NULL,
   `moderation` tinyint NOT NULL
-) ENGINE=MyISAM */;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -40,10 +41,10 @@ SET character_set_client = @saved_cs_client;
 --
 
 DROP TABLE IF EXISTS `summary_text_view`;
-/*!50001 DROP VIEW IF EXISTS `summary_text_view`*/;
-SET @saved_cs_client     = @@character_set_client;
+DROP VIEW IF EXISTS `summary_text_view`;
+SET @saved_cs_client = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `summary_text_view` (
+CREATE TABLE `summary_text_view` (
   `proj_id` tinyint NOT NULL,
   `text_name` tinyint NOT NULL,
   `group_name` tinyint NOT NULL,
@@ -54,7 +55,7 @@ SET character_set_client = utf8;
   `embedding` tinyint NOT NULL,
   `origins` tinyint NOT NULL,
   `moderation` tinyint NOT NULL
-) ENGINE=MyISAM */;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -62,8 +63,8 @@ SET character_set_client = @saved_cs_client;
 --
 
 DROP TABLE IF EXISTS `table_parsed_text`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 CREATE TABLE `table_parsed_text` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `source` int(11) DEFAULT NULL,
@@ -72,31 +73,31 @@ CREATE TABLE `table_parsed_text` (
   `embedding` blob DEFAULT NULL,
   `moderation` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=56203 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `table_source`
 --
 
 DROP TABLE IF EXISTS `table_source`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 CREATE TABLE `table_source` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `text_name` varchar(255) DEFAULT NULL,
   `group_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1 COMMENT='The source doc for the parsed text';
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 COMMENT='The source doc for the parsed text';
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `table_summary_text`
 --
 
 DROP TABLE IF EXISTS `table_summary_text`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 CREATE TABLE `table_summary_text` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `source` int(11) DEFAULT NULL,
@@ -107,54 +108,52 @@ CREATE TABLE `table_summary_text` (
   `origins` text DEFAULT NULL,
   `moderation` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7492 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Final view structure for view `source_text_view`
 --
 
-/*!50001 DROP TABLE IF EXISTS `source_text_view`*/;
-/*!50001 DROP VIEW IF EXISTS `source_text_view`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `source_text_view` AS select `s`.`id` AS `source_id`,`s`.`text_name` AS `text_name`,`s`.`group_name` AS `group_name`,`p`.`id` AS `text_id`,`p`.`summary_id` AS `summary_id`,`p`.`parsed_text` AS `parsed_text`,`p`.`embedding` AS `embedding`,`p`.`moderation` AS `moderation` from (`table_source` `s` join `table_parsed_text` `p` on(`p`.`source` = `s`.`id`)) */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
+DROP TABLE IF EXISTS `source_text_view`;
+DROP VIEW IF EXISTS `source_text_view`;
+SET @saved_cs_client          = @@character_set_client;
+SET @saved_cs_results         = @@character_set_results;
+SET @saved_col_connection     = @@collation_connection;
+SET character_set_client      = utf8mb4;
+SET character_set_results     = utf8mb4;
+SET collation_connection      = utf8mb4_unicode_ci;
+CREATE ALGORITHM=UNDEFINED
+VIEW `source_text_view` AS select `s`.`id` AS `source_id`,`s`.`text_name` AS `text_name`,`s`.`group_name` AS `group_name`,`p`.`id` AS `text_id`,`p`.`summary_id` AS `summary_id`,`p`.`parsed_text` AS `parsed_text`,`p`.`embedding` AS `embedding`,`p`.`moderation` AS `moderation` from (`table_source` `s` join `table_parsed_text` `p` on(`p`.`source` = `s`.`id`));
+SET character_set_client      = @saved_cs_client;
+SET character_set_results     = @saved_cs_results;
+SET collation_connection      = @saved_col_connection;
 
 --
 -- Final view structure for view `summary_text_view`
 --
 
-/*!50001 DROP TABLE IF EXISTS `summary_text_view`*/;
-/*!50001 DROP VIEW IF EXISTS `summary_text_view`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `summary_text_view` AS select `ts`.`id` AS `proj_id`,`ts`.`text_name` AS `text_name`,`ts`.`group_name` AS `group_name`,`tst`.`id` AS `text_id`,`tst`.`summary_id` AS `summary_id`,`tst`.`level` AS `level`,`tst`.`summary_text` AS `parsed_text`,`tst`.`embedding` AS `embedding`,`tst`.`origins` AS `origins`,`tst`.`moderation` AS `moderation` from (`table_summary_text` `tst` join `table_source` `ts` on(`tst`.`source` = `ts`.`id`)) */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+DROP TABLE IF EXISTS `summary_text_view`;
+DROP VIEW IF EXISTS `summary_text_view`;
+SET @saved_cs_client          = @@character_set_client;
+SET @saved_cs_results         = @@character_set_results;
+SET @saved_col_connection     = @@collation_connection;
+SET character_set_client      = utf8mb4;
+SET character_set_results     = utf8mb4;
+SET collation_connection      = utf8mb4_unicode_ci;
+CREATE ALGORITHM=UNDEFINED
+VIEW `summary_text_view` AS select `ts`.`id` AS `proj_id`,`ts`.`text_name` AS `text_name`,`ts`.`group_name` AS `group_name`,`tst`.`id` AS `text_id`,`tst`.`summary_id` AS `summary_id`,`tst`.`level` AS `level`,`tst`.`summary_text` AS `parsed_text`,`tst`.`embedding` AS `embedding`,`tst`.`origins` AS `origins`,`tst`.`moderation` AS `moderation` from (`table_summary_text` `tst` join `table_source` `ts` on(`tst`.`source` = `ts`.`id`));
+SET character_set_client      = @saved_cs_client;
+SET character_set_results     = @saved_cs_results;
+SET collation_connection      = @saved_col_connection;
+SET TIME_ZONE=@OLD_TIME_ZONE;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT;
+SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS;
+SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION;
+SET SQL_NOTES=@OLD_SQL_NOTES;
 
 -- Dump completed on 2023-05-05  9:49:24

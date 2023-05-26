@@ -1,5 +1,6 @@
 Explorer Apps
 ====================================
+
 There are six(!) applications in this project, _KeywordExplorer_, _TweetsCountExplorer_, _TweetDownloader_,  _WikiPageviewExplorer_, _TweetEmbedExplorer_, and _ModelExplorer_. The latest stable version can be installed with pip:
 
     pip install keyword-explorer
@@ -19,7 +20,9 @@ A brief overview of each can be reached using the links below.
 [**ModelExplorer**](./markup/ModelExplorer.md) is a Python desktop app that lets a user interact with a finetuned GPT-2 model trained using EmbeddingExplorer
 
 ## Before Using! <span id = "before-using"/>
+
 Most of these apps **require** that you have an OpenAI account and/or a Twitter developer account:
+
 * _KeywordExplorer_ requires a Twitter and OpenAI account
 * _TweetCountExplorer_ requires a Twitter developer account
 * _WikiPageviewExplorer_ uses the wikipedia API (pip install wikipedia), and requires a user agent
@@ -55,6 +58,77 @@ In this case, BEARER_TOKEN_2 id for the Twitter V2 account, OPENAI_KEY is for th
 
 To load the file click on the "File" menu and select "Load IDs". Then navigate to the json file and select it. After the ids are loaded, any application that depends on them will run. If you try using an app that doesn't have an active ID, it will complain.
 
->![LoadID](./images/load_id.png)
+![LoadID](./images/load_id.png)
+
+
+Alternately you can create a `.env` file in the folder from which you are running the apps or a parent folder thereof.
+An example of this file is provided as `.env_example`.  
+
+To use this method copy `.env_example` to `.env`,  enter your keys and save the file.  
+
+This file uses [dotenv](https://pypi.org/project/python-dotenv/) to automatically search for and environment variables and load them.
+`.env` is ignored by git as to make sure it is not committed.
+
+```
+DATABASE_USER=root
+DATABASE_PASSWORD=password
+DATABASE_HOST=localhost
+DATABASE_SSL_CA=/home/username/.ssl/DigiCertGlobalRootG2.crt.pem
+OPENAI_KEY=AAAAAAAAAAAAAAAAAAAAAC-----------------------
+BEARER_TOKEN_2=AAAAAAAAAAAAAAAAAAAAAC-----------------------
+USER_AGENT=xyz@xyz.com
+```
+
+Default values are used if an environment variable is omitted.
+
+`DATABASE_SSL_CA` is only required if you are connecting to a non-local database via ssl.  It is the path to the file that contains a PEM-formatted CA certificate.
+By example, if you are using an Azure MySQL database the .pem file can be obtained [here](https://learn.microsoft.com/en-us/azure/mysql/single-server/how-to-configure-ssl).
+Sometimes the Root CA changes, as happened recently with Azure MySQL.  The new certificates can be found [here](https://learn.microsoft.com/en-us/azure/mysql/single-server/concepts-certificate-rotation).
+
+## MySQL Database Setup
+
+1. Create a .my.cnf file in your home directory:
+
+```{bash}
+touch ~/.my.cnf
+```
+
+2. Open the .my.cnf file and paste the contents of .my.cnf_example into it.
+
+3. Modify the values in .my.cnf to match your MySQL configuration.
+
+Set the correct file permissions:
+
+```{bash}
+chmod 600 ~/.my.cnf
+```
+
+4. Verify the setup by running mysql without specifying user and password.
+
+```{bash}
+make show-databases
+```
+
+5. Create the databases.
+
+```{bash}
+make create-databases
+```
+
+## make commands explained
+
+|make|description|
+|---|---|
+|help             |This help|
+|clean            |Removes build artifacts|
+|clean-all        |Remove the virtual environment and build artifacts|
+|venv             |Create/update project's virtual enviornment. To activate, run: source activate.sh|
+|test             |Run unit tests|
+|dist             |Create python package and run unit tests|
+|publish          |Create/publish python package to test pypi repo|
+|show-databases   |show existing databases (also tests database connection)|
+|create-databases |create databases|
+|drop-databases   |drop databases|
 
 You should be good to use the apps!
+

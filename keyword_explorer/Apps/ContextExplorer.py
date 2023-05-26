@@ -83,7 +83,7 @@ class ContextExplorer(AppBase):
         self.oai = OpenAIComms()
         self.oae = OpenAIEmbeddings()
         self.so = SharedObjects()
-        self.msi = MySqlInterface(user_name="root", db_name="gpt_summary")
+        self.msi = MySqlInterface(db_name="gpt_summary")
 
         if not self.oai.key_exists():
             message.showwarning("Key Error", "Could not find Environment key 'OPENAI_KEY'")

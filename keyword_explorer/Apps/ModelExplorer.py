@@ -52,7 +52,7 @@ class ModelExplorer(AppBase):
         self.app_name = "ModelExplorer"
         self.app_version = "10.27.22"
         self.geom = (850, 750)
-        self.msi = MySqlInterface(user_name="root", db_name="gpt_experiments")
+        self.msi = MySqlInterface(db_name="gpt_experiments")
         self.tokenizer = None
         self.model = None
         self.sequence_regex = re.compile(r"\]\]\[\[")
