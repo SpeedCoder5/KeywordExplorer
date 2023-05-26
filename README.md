@@ -129,6 +129,6 @@ make create-databases
 |show-databases   |show existing databases (also tests database connection)|
 |create-databases |create databases|
 |drop-databases   |drop databases|
+|get-corpora      |download some books from gutenberg to corpora|
 
 You should be good to use the apps!
-

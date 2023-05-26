@@ -58,3 +58,14 @@ drop-databases: ## drop databases
 	for db_name in $(DB_NAMES); do \
 		mysql -v -e "DROP DATABASE $$db_name;";
 	done; \
+
+get-corpora: ## download some books from gutenberg to corpora
+	mkdir -p corpora;\
+	cd corpora;\
+ 	wget -O bible.txt.utf-8 https://www.gutenberg.org/ebooks/10.txt.utf-8;\
+ 	wget -O clausewitz.txt.utf-8 https://www.gutenberg.org/files/1946/1946-0.txt;\
+	wget -O melville.txt.utf-8 https://www.gutenberg.org/files/2701/2701-0.txt;\
+ 	wget -O quixote.txt.utf-8 https://www.gutenberg.org/ebooks/996.txt.utf-8;\
+ 	wget -O sunzi.txt.utf-8 https://www.gutenberg.org/ebooks/132.txt.utf-8;\
+ 	wget -O tolstoy.txt.utf-8 https://www.gutenberg.org/ebooks/2600.txt.utf-8;\
+	cd -
