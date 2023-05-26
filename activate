@@ -1,4 +1,4 @@
 #!/bin/bash
-# run setup.sh first
+# run make venv first
 umask 0002
 source ~/.virtualenvs/kwe/bin/activate

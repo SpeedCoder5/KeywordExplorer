@@ -122,7 +122,7 @@ make create-databases
 |help             |This help|
 |clean            |Removes build artifacts|
 |clean-all        |Remove the virtual environment and build artifacts|
-|venv             |Create/update project's virtual enviornment. To activate, run: source activate.sh|
+|venv             |Create/update project's virtual environment. To activate, run: source activate|
 |test             |Run unit tests|
 |dist             |Create python package and run unit tests|
 |publish          |Create/publish python package to test pypi repo|

@@ -15,7 +15,7 @@ clean: ## Removes build artifacts
 clean-all: clean ## Remove the virtual environment and build artifacts
 	rm -rf $(HOME)/.virtualenvs/$(PROJECT_NAME);
 
-venv: ## Create/update project's virtual enviornment. To activate, run: source activate.sh
+venv: ## Create/update project's virtual environment. To activate, run: source activate
 	python3 -m venv $(HOME)/.virtualenvs/$(PROJECT_NAME); \
 	. $(HOME)/.virtualenvs/$(PROJECT_NAME)/bin/activate; \
 	python -m pip install --upgrade pip; \
